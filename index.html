@@ -581,11 +581,11 @@
 
     let urlToOpen;
     if (orderMode === 'mail') {
-      const to = 'edit.edit.insta@gmail.com';
+      const to = 'mrineshassociates@gmail.com';
       const subject = `New order from website — ${normalize(data.name) || 'New'} `;
       urlToOpen = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodedBody}`;
     } else {
-      const WHATSAPP_NUMBER = '9629563236'; // <-- REPLACE with your number (digits only)
+      const WHATSAPP_NUMBER = '8111030003'; // <-- REPLACE with your number (digits only)
 urlToOpen = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(bodyText)}`;
     }
 
@@ -656,3 +656,4 @@ urlToOpen = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(bodyText
 </script>
 </body>
 </html>
+
