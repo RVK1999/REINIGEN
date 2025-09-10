@@ -1,254 +1,154 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PRODUCTS SHOPPING</title>
-  <style>
-:root{
-  --bg:#ffffff;
-  --card:#fff;
-  --accent:#2b6cb0;
-  --muted:#6b6b6b;
-  --glass: rgba(0,0,0,0.06);
-  --radius:12px;
-  --error:#ff0000;
-  --cart-glow:#15c02b;
-  --wa-green:#25D366;
-  --outlook-blue:#0078d4;
-  --maxw:none;
-}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PRODUCTS SHOPPING</title>
 
-/* reset / layout basics */
+<style>
+
+:root{--bg:#ffffff; --card:#fff; --accent:#2b6cb0; --muted:#6b6b6b; --glass: rgba(0,0,0,0.06); --radius:12px; --error:#ff0000; --cart-glow:#15c02b; --wa-green:#25D366; --outlook-blue:#0078d4; --maxw:none;}
 *{box-sizing:border-box}
 html,body{height:100%;width:100%;overflow-x:hidden}
-body{
-  margin:0;
-  background:var(--bg);
-  color:#111;
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,system-ui;
-  -webkit-font-smoothing:antialiased;
-}
-.wrap{
-  width:100%;
-  max-width:calc(100% - 36px);
-  margin:0 auto;
-  padding:18px;
-  max-width:var(--maxw);
+body{margin:0; background:var(--bg); color:#111; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,system-ui; -webkit-font-smoothing:antialiased;}
+.wrap{ width:100%; max-width:calc(100% - 36px); margin:0 auto; padding-left:2px; padding-right: 2px; max-width:var(--maxw);}
+
+
+/* Menubar */
+.topbar{display:flex; align-items:center; height:100px; justify-content:space-between; gap:10px; background: linear-gradient(180deg, #32adff, #8fdfff, #b7ebff);}
+
+
+/* Logo */
+.logo-placeholder{ width:300px; height:150px; display:flex; align-items:center; justify-content:center; padding-top: 5px; padding-bottom: 5px;}
+.logo-placeholder img {max-width: 100%; max-height: 100%; object-fit: contain; display: block; filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px #fff);}
+
+/* Menus */
+.menu-right{ display:flex; gap:20px; align-items:center;}
+.menu-right a{color:var(--accent); text-decoration:none; text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px  2px 0 #fff, 2px  2px 0 #fff; font-weight:700; padding:10px 10px; border-radius:6px; font-size:25px;}
+.menu-right a:hover{ background:#0f3a63; text-shadow:none; color:#ffffff }
+
+@media (max-width:768px)
+{
+.topbar{ padding:8px 12px; gap:12px; }
+.logo-placeholder{ width:130px; height:42px; font-size:16px; }
+.menu-right a{ font-size:14px; padding:5px 8px; }
 }
 
-/* -------------------------
-   TOPBAR (logo left, menu right)
-   ------------------------- */
-.topbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-  margin-bottom:12px;
-  padding:10px 16px;
-  background: linear-gradient(180deg, #ffffff, #f4fbff);
-  border-radius:10px;
-  border:1px solid rgba(10,50,90,0.04);
+@media (max-width:480px)
+{
+.topbar{ padding:6px 10px; gap:10px; }
+.logo-placeholder{ width:240px; height:120px; font-size:20px; }
+.menu-right{ gap:0.5px; }
+.menu-right a{ font-size:10px; padding:3px 3px; }
+
 }
 
-/* logo box */
-.logo-placeholder{
-  width:160px;
-  height:48px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-  color:#2b6cb0;
-  background:transparent;
-  border-radius:8px;
-  font-size:18px;
+
+/* Header Cover */
+.cover-placeholder{ width:100%; height:250px; display:flex; align-items:center; justify-content:center; position: relative; overflow: hidden; background-image: none;}
+.cover-placeholder::before{ content: ""; position: absolute; inset: 0; background-image: url('LOGO/COVERIMAGE.png'); background-size: 100% 100%; background-position: center; background-repeat: no-repeat; filter: blur(8px) brightness(0.9); transform: scale(1.03); z-index: 0; pointer-events: none;}
+.cover-placeholder > * { position: relative; z-index: 1;}
+.cover-placeholder .cover-content{ display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 0 18px; text-align: center; color: #ffffff; pointer-events: auto;}
+.cover-placeholder .cover-content h1{ margin: 0; font-size: 45px; line-height: 1.05; font-weight: 800; letter-spacing: -0.01em; text-shadow: 0 0 0 #007ecc, 1px 1px 0 #007ecc, -1px -1px 0 #007ecc, 1px -1px 0 #007ecc, -1px 1px 0 #007ecc, 0 0 4px rgba(0,126,204,0.85), 0 0 8px rgba(0,126,204,0.65), 0 0 16px rgba(0,126,204,0.36), 0 0 28px rgba(0,126,204,0.18), 0 0 48px rgba(0,126,204,0.10);}
+.cover-placeholder .cover-content p{ margin: 0; font-size: 20px; color: rgba(255,255,255,0.96); text-shadow: 0 4px 10px #00a6ff;}
+.cover-placeholder .cover-cta{ margin-top: 6px; }
+.cover-placeholder .cover-cta .btn{ padding: 8px 14px; border-radius: 8px; font-weight: 700; min-width: 110px; text-align: center; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18); color: #fff; backdrop-filter: blur(2px);}
+
+@media (max-width:480px)
+{
+.cover-placeholder{ height: 150px; }
+.cover-placeholder .cover-content{ gap:6px; padding: 0 12px; }
+.cover-placeholder .cover-content h1{ font-size: 30px; }
+.cover-placeholder .cover-content p{font-size: 10px;}
 }
 
-/* right menu area */
-.menu-right{
-  display:flex;
-  gap:12px;
-  align-items:center;
-}
-.menu-right a{
-  color:var(--accent);
-  text-decoration:none;
-  font-weight:700;
-  padding:6px 10px;
-  border-radius:6px;
-  font-size:15px;
-}
-.menu-right a:hover{ background:#0f3a63; color:#ffffff }
 
-/* -------------------------
-   Responsive sizing (but keep same row layout)
-   ------------------------- */
-@media (max-width:768px){
-  .topbar{ padding:8px 12px; gap:12px; }
-  .logo-placeholder{ width:130px; height:42px; font-size:16px; }
-  .menu-right a{ font-size:14px; padding:5px 8px; }
+.header h1{ font-family: "Times New Roman", Times, serif; font-size: 30px;}
+.sub { font-family: "Times New Roman", Times, serif; font-size: 16px; letter-spacing: 0.5px; word-spacing: 2px;  line-height: 1.7;}
+
+
+@media (max-width:900px)
+{
+.header h1{font-size: 25px;}
+.sub {font-size: 12px; text-align: justify; letter-spacing: 2px; line-height: 1.5;}
 }
 
-@media (max-width:480px){
-  .topbar{ padding:6px 10px; gap:10px; }
-  .logo-placeholder{ width:140px; height:40px; font-size:20px; }
-  .menu-right{ gap:0.5px; }
-  .menu-right a{ font-size:13px; padding:4px 6px; }
-}
-
-/* header cover placeholder */
-.cover-placeholder{
-  width:100%;
-  height:140px;
-  border-radius:10px;
-  background:linear-gradient(180deg,#ffffff,#f3f8ff);
-  border:1px dashed #dfeefe;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#9bb0c8;
-  font-weight:700;
-  margin-bottom:12px;
-}
-
-/* header text */
-.header{ background:linear-gradient(180deg,#fff,transparent); padding:14px; border-radius:8px; margin-bottom:12px; }
-.header h1{ margin:0; font-size:18px; }
-.sub{ color:var(--muted); margin-top:6px; }
-
-/* filter chips */
+/* Filter */
 .filter-row{ display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
-.chip{ padding:8px 12px; border-radius:999px; background:#fff; border:1px solid #eee; color:var(--muted); cursor:pointer; }
+
+.chip{ font-size: 20px; font-weight: 400; padding:8px 12px; border-radius:999px; background:#fff; border:1px solid #eee; color:var(--muted); cursor:pointer; }
 .chip.active{ background:var(--accent); color:#fff; border-color:transparent; }
-@media (max-width:480px){
-  .chip {
-    padding:2px 4px;      /* smaller padding */
-    font-size:11px;       /* reduced font size */
-  letter-spacing:0.3px;
-  margin:0;
 
-  }
-  .filter-row { gap:4px; } /* reduce gap between filters */
-  .filter-icon {display:none;}
+
+@media (max-width:480px)
+{
+.chip { padding:2px 4px; font-size:11px; letter-spacing:0.3px; margin:0;}
+.filter-row { gap:4px; }
+.filter-icon {display:none;}
 }
 
-/* -------------------------
-   GRID & CARD (media next to rules)
-   ------------------------- */
-.grid{
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-  align-items:flex-start;
-  justify-content:flex-start;
-  width:100%;
-}
-/* tablet grid tweak next to grid rule */
-@media (max-width:1024px){
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:18px;
-    justify-items:center;
-    align-items:start;
-  }
-}
-/* phone: single column center */
-@media (max-width:480px){
-  .grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:12px;
-    justify-items:center;
-    align-items:start;
-  }
+
+/* Product Card */
+.grid{display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; justify-content:flex-start; width:100%;}
+
+@media (max-width:1024px)
+{
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; justify-items:center; align-items:start;}
 }
 
-.card{
-  background:var(--card);
-  padding:14px;
-  border-radius:10px;
-  box-shadow:0 8px 20px var(--glass);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:8px;
-  flex:1 1 calc((100%/3) - 20px);
-  min-width:260px;
-  max-width:calc((100%/3) - 20px);
+@media (max-width:480px)
+{
+.grid{display:grid; grid-template-columns:1fr; gap:12px; justify-items:center; align-items:start;}
 }
-/* 2 cols on medium screens */
-@media (max-width:1200px){
-  .card{ flex:1 1 calc((100%/2) - 20px); max-width:calc((100%/2) - 20px); }
-  @media (max-width:1024px){
-    .card{ max-width:520px; width:100%; margin:0 auto; }
-  }
+.card{background:var(--card); padding:14px; border-radius:10px; box-shadow:0 8px 20px #8fdfff; display:flex; flex-direction:column; align-items:center; gap:8px; flex:1 1 calc((100%/3) - 20px); min-width:260px; max-width:calc((100%/3) - 20px);}
+
+/* Product Row 2 Count Display */
+@media (max-width:1200px)
+{
+.card{ flex:1 1 calc((100%/2) - 20px); max-width:calc((100%/2) - 20px); }
+@media (max-width:1024px)
+{
+.card{ max-width:520px; width:100%; margin:0 auto; }
 }
+}
+
 /* mobile card adjustments next to card rule */
-@media (max-width:480px){
-  .card{ width:calc(100% - 8px); max-width:560px; margin:0 auto; padding:12px; }
+@media (max-width:480px)
+{
+.card{ width:calc(100% - 8px); max-width:560px; margin:0 auto; padding:12px; }
 }
+
 
 /* thumbnails — grid, modal and cart will reuse same image URL */
-.thumb{
-  width:100%;
-  max-width:320px;
-  height:220px;
-  border-radius:8px;
-  background:#fff;
-  border:2px dashed #e6e6e6;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#bdbdbd;
-  font-weight:600;
-  overflow:hidden;
-}
-.thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+.thumb{width:100%; max-width:320px; height:220px; border-radius:8px; background:#fff; border:2px dashed #e6e6e6; display:flex; align-items:center; justify-content:center; color:#bdbdbd; font-weight:600; overflow:hidden;}
+.thumb img{ width:auto; height:auto; max-width: 100%; max-height: 100%; object-fit:contain; display:block; }
+
 
 /* phone: make thumb proportion friendlier; placed next to thumb rules */
-@media (max-width:480px){
-  .thumb{ height:auto; padding-top:62%; position:relative; }
-  .thumb img{ position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; }
+@media (max-width:480px)
+{
+.thumb{ height: auto; padding-top: 62%; position: relative; overflow: hidden;}
+.thumb img{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; object-position: center; display: block;
+}
 }
 
-/* product name/info */
+
+/* Product Info */
 .pname{ font-weight:700; margin-top:6px; text-align:center; }
 .pinfo{ font-size:13px; color:var(--muted); text-align:center; }
 
-/* controls & buttons (base) */
+
+/* Controls & Buttons (Base) */
 .controls{ display:flex; gap:10px; align-items:center; margin-top:8px; flex-wrap:wrap; justify-content:center; }
-.btn{
-  padding:8px 12px;
-  border-radius:8px;
-  border:0;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-  font-weight:600;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-}
+.btn{padding:8px 12px; border-radius:8px; border:0; background:var(--accent); color:#fff; cursor:pointer; font-weight:600; display:inline-flex; align-items:center; gap:8px;}
 .btn.ghost{ background:#fff; border:1px solid #ddd; color:var(--muted); }
 .btn.wa{ background:var(--wa-green); }
 .btn.mail{ background:var(--outlook-blue); }
 
+
 /* small logo next to button text (base) */
-.logo-small{
-  width:22px;
-  height:22px;
-  border-radius:4px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  flex:0 0 22px;
-  font-size:12px;
-  background:#fff;
-  border:1px solid rgba(0,0,0,0.05);
-}
+.logo-small{width:22px; height:22px; border-radius:4px; display:inline-flex; align-items:center; justify-content:center; flex:0 0 22px; font-size:12px; background:#fff; border:1px solid rgba(0,0,0,0.05);}
+
 
 /* Qty controls */
 .qty{ display:flex; align-items:center; gap:6px; }
@@ -256,142 +156,136 @@ body{
 .qty .count{ min-width:26px; text-align:center; font-weight:700; }
 .remove-btn{ background:#fff; border:1px solid #f44336; color:#f44336; padding:6px 8px; border-radius:6px; cursor:pointer; }
 
-/* -------------------------
-   CART FLOAT (bright green glow)
-   ------------------------- */
-.cart-float{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  background:linear-gradient(180deg,#fff,#f7fbff);
-  padding:10px;
-  border-radius:28px;
-  box-shadow:0 12px 30px rgba(0,0,0,0.12), 0 0 30px 6px #1fff3d96;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  z-index:60;
-}
+
+/* CART FLOAT (Bright Green Glow) */
+.cart-float{ position:fixed; right:18px; bottom:18px; background:linear-gradient(180deg,#fff,#f7fbff); padding:10px; border-radius:28px; box-shadow:0 12px 30px rgba(0,0,0,0.12), 0 0 30px 6px #1fff3d96; cursor:pointer; display:flex; align-items:center; gap:10px; z-index:60;}
 .cart-count{ background:var(--accent); color:#fff; padding:6px 8px; border-radius:999px; font-weight:700; }
 
-/* smaller cart float on phones */
-@media (max-width:480px){
-  .cart-float{ right:12px; bottom:12px; padding:8px; border-radius:22px; gap:8px; box-shadow:0 10px 24px rgba(0,0,0,0.12), 0 0 20px 4px #1fff3d80; }
-  .cart-count{ padding:5px 7px; font-size:13px; }
+@media (max-width:480px)
+{
+.cart-float{ right:12px; bottom:12px; padding:8px; border-radius:22px; gap:8px; box-shadow:0 10px 24px rgba(0,0,0,0.12), 0 0 20px 4px #1fff3d80; }
+.cart-count{ padding:5px 7px; font-size:13px; }
 }
 
-/* -------------------------
-   OVERLAYS, MODALS, CART LIST
-   ------------------------- */
+
+/* OVERLAYS, MODALS, CART LIST */
 .overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.4); display:none; align-items:center; justify-content:center; z-index:120; padding:18px; }
 .overlay.show{ display:flex; }
-.modal{
-  background:var(--card);
-  border-radius:10px;
-  padding:18px;
-  max-width:980px;
-  width:100%;
-  max-height:88vh;
-  overflow:auto;
-  position:relative;
-  box-shadow:0 20px 60px rgba(0,0,0,0.18);
-}
-.modal .close{ position:absolute; right:12px; top:8px; border:0; background:none; font-size:20px; cursor:pointer; }
+.modal{background:var(--card); border-radius:10px; padding:18px; max-width:980px; width:100%; max-height:88vh; overflow:auto; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.18);}
+.modal .close { position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+  border: 0;
+  background: none;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 10px 10px;
+  cursor: pointer;
+  float: right;
+  color: #ffff;
+  text-shadow:-2px -2px 0 #006bd6, 2px -2px 0 #006bd6, -2px  2px 0 #006bd6, 2px  2px 0 #006ad4, -2px  0   0 #006ad4, 2px  0   0 #006ad4, 0 -2px 0 #006ad4,   0 2px 0 #006ad4;}
 .modal h2{ margin-top:0; text-align:center; }
 
-/* product modal layout + image area */
-.product-modal{ width:100%; max-width:1200px; height:80vh; display:flex; gap:18px; padding:18px; box-sizing:border-box; }
+@media (max-width:500px)
+{
+.modal .close{ position:sticky;  align-items: right; justify-content: right; text-align: right; margin-right: 5px; top:4px; border:0; background:none; font-size:20px; font-weight: 700; cursor:pointer; }
+}
+
+
+/* Product Modal Layout + Image Area */
+.product-modal{ width:100%; max-width:1200px; height:80vh; display:flex; gap:18px; padding:18px; padding-top: 42px; padding-right: 42px; box-sizing:border-box; }
 .product-modal .left{ flex:1; display:flex; align-items:center; justify-content:center; }
-.product-modal .left .modal-img{ width:500px; max-width:100%; height:auto; border-radius:8px; overflow:hidden; background:#fff; border:1px solid #eee; }
-.product-modal .left .modal-img img{ width:100%; height:auto; display:block; object-fit:cover; }
+.product-modal .left .modal-img {width: 500px; max-width: 90vw; height: 500px; max-height: 70vh; display: flex; align-items: center; justify-content: center; border-radius: 8px; overflow: hidden; background: #fff; border: 1px solid #eee; margin: 0 auto; box-sizing: border-box;}
+.product-modal .left .modal-img img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; object-fit: contain; object-position: center; margin: 0;}
 .product-modal .right{ flex:1; display:flex; flex-direction:column; gap:10px; }
 
-/* phone/tablet: product modal stacking adjacent to its rule */
-@media (max-width:1024px){
-  .product-modal .left .modal-img{ max-width:420px; }
+@media (max-width:1024px)
+{
+.product-modal .left .modal-img{ max-width:70%; align-items: center; align-content:center ; }
 }
-@media (max-width:480px){
-  .product-modal{ flex-direction:column; height:auto; padding:12px; }
-  .product-modal .left .modal-img{ width:100%; max-width:100%; margin-bottom:12px; }
-  .product-modal .right{ width:100%; }
+@media (max-width:480px)
+{
+.product-modal{ flex-direction:column; height:auto; padding:5px;gap:1px; }
+.product-modal .left .modal-img{ width:70%; max-width:70%; height: 50%; align-items: center; align-content:center ; margin-bottom:1px; margin-top: 1px; }
+.product-modal .right{ align-items: center; align-content:center ; gap:1px;}
 }
 
-/* cart list/table inside cart modal */
+
+/* Cart List/Table Inside Cart Modal */
 .cart-list{ max-height:56vh; overflow:auto; padding-right:8px; }
 .cart-list table{ width:100%; border-collapse:collapse; }
 .cart-list th, .cart-list td{ padding:8px; text-align:left; vertical-align:middle; }
 .cart-list th{ font-weight:800; }
 
-/* cart item image thumbnail */
-.cart-item-img{ width:64px; height:64px; border-radius:8px; overflow:hidden; display:inline-block; object-fit:cover; background:#f3f6fb; }
-.cart-item-img img{ width:100%; height:100%; object-fit:cover; display:block; }
 
-/* PHONE: hide cart thumbnails for cleaner UI (immediately after cart-item-img rule) */
-@media (max-width:480px){
-  .cart-item-img{ display:none !important; width:0; height:0; margin:0; padding:0; }
-  /* hide the image column (if your table structure uses the 2nd col for image) */
-  .cart-list td:nth-child(2), .cart-list th:nth-child(2){ display:none; }
-  .cart-list td, .cart-list th{ padding:8px 6px; font-size:14px; }
+/* Cart Item Image Thumbnail */
+.cart-item-img{ width:64px; height:64px; border-radius:8px; overflow:hidden; display:inline-block; object-fit:contain; background:#f3f6fb; }
+.cart-item-img img{ width:100%; height:auto; max-width: 100%; object-position: center; align-items: center; align-content: center; max-height: 100%; object-fit:contain; display:block; }
+
+@media (max-width:480px)
+{
+.cart-item-img{ display:none; width:0; height:0; margin:0; padding:0; }
+.cart-list td:nth-child(2), .cart-list th:nth-child(2){ display:none; }
+.cart-list td, .cart-list th{ padding:8px 6px; font-size:14px; }
 }
 
-/* -------------------------
-   CART MODAL - ORDER BUTTONS (no awkward wrap)
-   ------------------------- */
-/* place button control rules here */
+
+/* CART MODAL - ORDER BUTTONS (no awkward wrap)*/
 #cartModal .modal { --cart-actions-gap:12px; }
 #cartModal .modal > div:last-child { display:flex; gap:var(--cart-actions-gap); align-items:center; justify-content:space-between; flex-wrap:wrap; }
-/* provide a container class for right-side controls called .controls-row in DOM (CSS expects it) */
 #cartModal .controls-row{ display:flex; gap:10px; align-items:center; justify-content:flex-end; flex-wrap:wrap; }
 
-/* logos bigger on tablet and mobile for attractiveness */
-@media (max-width:1024px){
-  .logo-small{ width:26px; height:26px; flex:0 0 26px; font-size:12px; border-radius:5px; }
-  #cartModal .btn{ font-size:14px; padding:8px 11px; }
-}
-@media (max-width:480px){
-  /* stack the right-side block under the "Review Items" text */
-  #cartModal .modal { padding:12px; max-width:96vw; }
-  #cartModal .modal > div:last-child { flex-direction:column; gap:10px; align-items:stretch; }
-  #cartModal .controls-row{ display:flex; gap:10px; align-items:center; justify-content:center; white-space:nowrap; flex-wrap:nowrap; }
-  /* compact button text, icon dominant */
-  #cartModal .btn{ font-size:13px; padding:8px 10px; min-width:110px; justify-content:center; gap:10px; }
-  .logo-small{ width:34px; height:34px; flex:0 0 34px; font-size:14px; border-radius:6px; }
-  /* ensure icon backgrounds are visible */
-  .btn.mail .logo-small, .btn.wa .logo-small{ background:#fff; border:1px solid rgba(0,0,0,0.06); display:inline-flex; align-items:center; justify-content:center; }
-  /* keep button text from running off */
-  #cartModal .btn span{ display:inline-block; max-width:6.5rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; vertical-align:middle; }
+@media (max-width:1024px)
+{
+.logo-small{ width:26px; height:26px; flex:0 0 26px; font-size:12px; border-radius:5px; }
+#cartModal .btn{ font-size:14px; padding:8px 11px; }
 }
 
-/* failed popup, refresh overlay, etc. - kept simple */
+@media (max-width:480px)
+{
+#cartModal .modal { padding:12px; max-width:96vw; }
+#cartModal .modal > div:last-child { flex-direction:column; gap:10px; align-items:stretch; }
+#cartModal .controls-row{ display:flex; gap:10px; align-items:center; justify-content:center; white-space:nowrap; flex-wrap:nowrap; }
+#cartModal .btn{ font-size:13px; padding:8px 10px; min-width:110px; justify-content:center; gap:10px; }
+.logo-small{ width:34px; height:34px; flex:0 0 34px; font-size:14px; border-radius:6px; }
+.btn.mail .logo-small, .btn.wa .logo-small{ background:#fff; border:1px solid rgba(0,0,0,0.06); display:inline-flex; align-items:center; justify-content:center; }
+#cartModal .btn span{ display:inline-block; max-width:6.5rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; vertical-align:middle; }
+}
+
+
+/* Failed Popup, Refresh Overlay, etc. */
 .screen-refresh{ position:fixed; inset:0; background:#fff; opacity:0; pointer-events:none; transition:opacity .35s ease; z-index:250; }
 .screen-refresh.show{ opacity:1; pointer-events:auto; }
-
 .failed-popup{ background:#fff; padding:18px; border:2px solid var(--error); border-radius:8px; min-width:320px; text-align:center; box-shadow:0 12px 30px rgba(0,0,0,0.12); }
 .failed-actions{ display:flex; gap:10px; justify-content:center; margin-top:12px; }
-
 .btn.ghost{ background:#fff; color:var(--muted); border:1px solid #e5e7eb; }
 
-/* launch modal pieces */
+
+/* Launch Modal Pieces */
 .launch-graphic{ width:160px; height:160px; margin:10px auto; display:flex; align-items:center; justify-content:center; }
 .launch-title{ font-size:20px; font-weight:750; text-align:center; margin-top:6px; letter-spacing: 0.5px;}
 .launch-sub{ color:var(--muted); text-align:center; margin-top:8px; }
 
-/* form and field basics */
+
+/* Form and Field Basics */
 .form-row{ display:flex; gap:12px; margin-bottom:6px; flex-wrap:wrap; }
 .field{ flex:1; min-width:220px; }
 label{ display:block; font-size:13px; color:var(--muted); margin-bottom:4px; font-weight:700; text-transform:none; }
 .rule{ font-size:12px; color:#555; margin-bottom:6px; }
 input[type=text], textarea{ width:100%; padding:10px; border-radius:6px; border:1px solid #e5e7eb; font-size:14px; transition:border-color .12s, box-shadow .12s, background .12s; }
 input.invalid, textarea.invalid{ border-color:var(--error); background:#fff6f6; box-shadow:0 0 0 3px rgba(185,28,28,0.06); }
-
 .field-error{ display:none; margin-top:6px; color:var(--error); font-family:'Times New Roman', Times, serif; font-weight:700; font-size:12px; letter-spacing:0.03em; word-spacing:0.08em; display:flex; align-items:center; gap:8px; }
 .field-error svg{ width:18px; height:18px; flex:0 0 18px; }
-
-/* small visual helpfulness: clickable focus outlines */
 button:focus, input:focus, textarea:focus { outline: 3px solid rgba(43,108,176,0.12); outline-offset:2px; }
 
-/* final safety: avoid horizontal scroll on any zoom */
+#pDesc {
+  white-space: pre-line;  /* makes \n show as line breaks */
+}
+
 html, body { -webkit-overflow-scrolling: touch; overflow-x:hidden; }
 
   </style>
@@ -400,29 +294,35 @@ html, body { -webkit-overflow-scrolling: touch; overflow-x:hidden; }
   <div class="wrap">
     <!-- topbar: logo left, menu right -->
     <div class="topbar">
-      <div class="logo-placeholder" id="logoSpace">LOGO</div>
+      <div class="logo-placeholder" id="logoSpace"><img src="LOGO/REINIGENLOGO.png"> </div>
       <nav class="menu-right" id="menuRight">
-        <a href="#">Home</a>
         <a href="#">Products</a>
         <a href="#">About</a>
+        <a href="#">Resources</a>
         <a href="#">Contact</a>
       </nav>
     </div>
 
     <!-- cover placeholder for header image (you will replace this) -->
-    <div class="cover-placeholder" id="coverPlaceholder">Header cover placeholder - replace with your image</div>
+    <div class="cover-placeholder" id="coverPlaceholder">
+  <div class="cover-content" role="banner" aria-label="Header content">
+  <h1>We Are Your Hygiene Partner</h1>
+    <p><b>Use Our Cleaning Chemicals and Equipments to Keep Your House, Office and Surrounding Clean and Hygienic</b></p>
+  
+  </div>
+</div>
 
-    <div class="header"><h1>Product Catalog</h1><div class="sub">Select items and place an order. We will contact you to confirm — no prices on site.</div></div>
-
+<div class="header"><h1>Product Catalog</h1><div class="sub">Browse Our Range Of Cleaning Products. Select The Items You Need Using The <b>“ Add to Cart ”</b> And Quantity Options. Use <b>" Your Cart "</b> To Complete Your Order Through Your <b>WhatsApp</b> (or) <b>Email</b> App. You Can Also Use The <b>" Product Info "</b> Button To Learn More About Each Product.</div></div>
+<br>
     <div class="filter-row">
       <div class="filter-icon" title="Filters">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#374151" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M6 12h12M10 18h4"/></svg>
+       &nbsp; <svg viewBox="0 0 24 24" width="30" height="50" fill="none" stroke="#374151" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M6 12h12M10 18h4"/></svg>
       </div>
       <div class="chip active" data-filter="all"><b>All Products</b></div>
       <div class="chip" data-filter="Cleaning Chemicals"><b>Cleaning Chemicals</b></div>
       <div class="chip" data-filter="Cleaning Equipment"><b>Cleaning Equipments</b></div>
     </div>
-
+<br>
     <main>
       <section class="grid" id="grid"></section>
     </main>
@@ -628,12 +528,18 @@ html, body { -webkit-overflow-scrolling: touch; overflow-x:hidden; }
   /* ========== Minimal config & sample products ========== */
   // If you put image URLs here (500x500 recommended), they will be used across grid, modal and cart.
   const PRODUCTS = [
-    { id:1, name:'Product 1', category:'Cleaning Chemicals', tags:['liquid','concentrate'], desc:'High-quality cleaning concentrate for floors.', img: '' },
-    { id:2, name:'Product 2', category:'Cleaning Chemicals', tags:['powder'], desc:'Powdered detergent for heavy stains.', img: '' },
-    { id:3, name:'Product 3', category:'Cleaning Equipment', tags:['sprayer'], desc:'Handheld sprayer for small areas.', img: '' },
-    { id:4, name:'Product 4', category:'Cleaning Equipment', tags:['brush'], desc:'Durable scrub brush for tough dirt.', img: '' },
-    { id:5, name:'Product 5', category:'Cleaning Chemicals', tags:['disinfectant'], desc:'Hospital-grade disinfectant.', img: '' },
-    { id:6, name:'Product 6', category:'Cleaning Equipment', tags:['machine'], desc:'Floor cleaning machine (compact).', img: '' }
+    { id:1, name:'Glass Cleaner', category:'Cleaning Chemicals', tags:['XXXX','XXXX'], desc:'XXX', img: 'PRODUCTS/GlassCleaner.png' },
+    { id:2, name:'Hand Wash', category:'Cleaning Chemicals', tags:['XXXX'], desc:'XXXX', img: 'PRODUCTS/Handwash.png' },
+    { id:3, name:'Floor Cleaner', category:'Cleaning Chemicals', tags:['XXXX'], desc:'XXXX', img: 'PRODUCTS/FloorCleaner.png' },
+    { id:4, name:'Fabric Softner', category:'Cleaning Chemicals', tags:['XXXX'], desc:'XXXX', img: 'PRODUCTS/FabricSoftner.png' },
+    { id:5, name:'Fabric Softner Pink', category:'Cleaning Chemicals', tags:['XXXX'], desc:'XXXX', img: 'PRODUCTS/FabricSoftnerPink.png' },
+    { id:6, name:'Phenyle', category:'Cleaning Chemicals', tags:['XXXX'], desc:'XXXX', img: 'PRODUCTS/Phenyle.png' },
+    { id:7, name:'Phenyle Black', category:'Cleaning Chemicals', tags:['XXXX'], desc:'XXXX', img: 'PRODUCTS/PhenyleBlack.png' },
+    { id:8, name:'Phenyle Blue Box', category:'Cleaning Chemicals', tags:['XXXX'], desc:'XXXX', img: 'PRODUCTS/PhenyleBlueBox.png' },
+    { id:9, name:'Soap Oil', category:'Cleaning Chemicals', tags:['XXXX'], desc:'XXXX', img: 'PRODUCTS/SoapOil.png' },
+    { id:10, name:'Washing Gel', category:'Cleaning Chemicals', tags:['XXXX'], desc:'XXXX', img: 'PRODUCTS/WashingGel.png' },
+    { id:11, name:'Cleaning Equipment', category:'Cleaning Equipment', tags:['XXXX'], desc:'XXXX', img: '' },
+    { id:12, name:'Cleaning Equipment', category:'Cleaning Equipment', tags:['XXXX'], desc:'XXXX', img: '' },
   ];
 
   const state = { cart: {}, currentProduct: null };
@@ -714,7 +620,7 @@ html, body { -webkit-overflow-scrolling: touch; overflow-x:hidden; }
       const p = PRODUCTS.find(x=>x.id==id);
       const name = p ? escapeHtml(p.name) : escapeHtml('Item ' + id);
       const qty = state.cart[id];
-      const imgTag = (p && p.img) ? `<td style="padding:6px;vertical-align:middle"><img src="${escapeHtml(p.img)}" width="60" height="60" style="object-fit:cover;border-radius:6px" alt="${escapeHtml(p.name)}"></td>` : `<td style="padding:6px;vertical-align:middle"><div style="width:60px;height:60px;background:#f3f6fb;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#9aa5b1">Img</div></td>`;
+      const imgTag = (p && p.img) ? `<td style="padding:6px;vertical-align:middle"><img src="${escapeHtml(p.img)}" width="60" height="60" style="object-fit:contain;border-radius:6px" alt="${escapeHtml(p.name)}"></td>` : `<td style="padding:6px;vertical-align:middle"><div style="width:60px;height:60px;background:#f3f6fb;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#9aa5b1">Img</div></td>`;
       return { idx: idx+1, name, qty, imgTag };
     });
 
