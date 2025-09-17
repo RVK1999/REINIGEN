@@ -788,7 +788,7 @@ function buildWhatsAppText(formData){
     return `*${idx + 1}* | ${p ? p.name : 'Item ' + id} | *Qty:* ${state.cart[id]}`;
   }).join('\n');
 
-  const cust = `*Customer Details*\n*Name:* ${formData.name || ''}\n*Phone:* ${formData.phone || ''}\n*Address:* ${formData.address || ''}\n'-'}`;
+  const cust = `*Customer Details*\n*Name:* ${formData.name || ''}\n*Phone:* ${formData.phone || ''}\n*Address:* ${formData.address || ''}}`;
 
   return `${header}\n\nOrdered Items from Reinigen\n\n\n${itemsHeader}\n${items}\n\n${cust}\n\nPlaced: ${new Date().toLocaleString()}`;
 }
@@ -1159,3 +1159,4 @@ if(!validName(nameInput.value) || !validPhone(phoneInput.value) || !validAddress
 
 </body>
 </html>
+
